@@ -1,24 +1,27 @@
 package org.emp.gl.core.launcher;
 
-import org.emp.gl.clients.Horloge ;
+import org.emp.gl.clients.Horloge;
+import org.emp.gl.clients.CompteARebours;
+import org.emp.gl.clients.HorlogeGUI;
+import org.emp.gl.time.service.impl.DummyTimeServiceImpl;
+import org.emp.gl.timer.service.TimerService;
 
-/**
- * Hello world!
- *
- */
 public class App {
 
     public static void main(String[] args) {
-
         testDuTimeService();
     }
 
     private static void testDuTimeService() {
-        Horloge horloge = new Horloge("Num 1") ;
-    }
+        TimerService timerService = new DummyTimeServiceImpl();
 
-    public static void clearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
+        new Horloge("Horloge 1", timerService);
+        new Horloge("Horloge 2", timerService);
+        new CompteARebours("C1", 5, timerService);
+        new CompteARebours("C2", 10, timerService);
+        new CompteARebours("C3", 15, timerService);
+
+        // BONUS : interface graphique Swing 🖥️
+        new HorlogeGUI(timerService);
     }
 }
