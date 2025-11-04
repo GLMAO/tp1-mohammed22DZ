@@ -21,7 +21,7 @@ public class App {
         new CompteARebours("C2", 10, timerService);
         new CompteARebours("C3", 15, timerService);
 
-        // BONUS : interface graphique Swing 🖥️
+
         new HorlogeGUI(timerService);
     }
 }
